@@ -4,12 +4,12 @@ import { onUnmounted, watch } from 'vue';
 
 const { isAnyRoute } = useRouteHelpers();
 
-watch(
-  isAnyRoute,
-  () => {
-    console.log('watch - isAnyRoute', isAnyRoute.value);
-  },
-);
+// watch(
+//   isAnyRoute,
+//   () => {
+//     console.log('watch - isAnyRoute', isAnyRoute.value);
+//   },
+// );
 
 onUnmounted(() => {
   console.log('Unmounted Home - isAnyRoute:', isAnyRoute.value);
