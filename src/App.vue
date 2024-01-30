@@ -5,7 +5,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import { useRouteHelpers } from './components/useRouteHelpers'
 
 const route = useRoute();
-const { isAnyRoute } = useRouteHelpers();
+const { isHome } = useRouteHelpers();
 </script>
 
 <template>
@@ -14,7 +14,7 @@ const { isAnyRoute } = useRouteHelpers();
 
     <div class="wrapper">
       <HelloWorld :msg="`You did it! /${String(route.name)}`" />
-      <p>{{ isAnyRoute }}</p>
+      <p>{{ isHome }}</p>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>

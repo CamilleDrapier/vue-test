@@ -1,19 +1,27 @@
 <script setup lang="ts">
 import { useRouteHelpers } from '@/components/useRouteHelpers';
-import { onUnmounted, watch } from 'vue';
+import { onUnmounted, ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-const { isAnyRoute } = useRouteHelpers();
+const { isHome } = useRouteHelpers();
+const route = useRoute();
+
+const nb = ref(0);
 
 watch(
-  isAnyRoute,
+  route,
   () => {
-    console.log('watch - isAnyRoute', isAnyRoute.value);
+    console.log('watch - isHome', isHome.value);
+    if (!nb.value) {
+      nb.value = 1;
+      useRouter().push({ name: 'home', params: { nb:1 } });
+    }
   },
 );
 
 onUnmounted(() => {
-  console.log('Unmounted Home - isAnyRoute:', isAnyRoute.value);
-  if(!isAnyRoute.value) console.log('To the unknown~');
+  console.log('Unmounted Home - isHome:', isHome.value);
+  if(!isHome.value) console.log('To the unknown~');
 })
 </script>
 
